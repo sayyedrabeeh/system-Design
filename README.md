@@ -205,3 +205,15 @@ The majority of systems can tolerate some inconsistency and should prioritize av
 *Review Sites (like Yelp)*: If a restaurant updates their hours, showing slightly outdated information briefly is better than showing no information at all.
 ***The key question to ask yourself is: "Would it be catastrophic if users briefly saw inconsistent data?" If the answer is yes, choose consistency. If not, choose availability.***\
 
+
+### ACID Model in DB
+
+ACID stands for Atomicity, Consistency, Isolation, and Durability. It is a transaction processing model used in databases to ensure that data remains accurate and consistent during a transaction.
+
+**Atomicity**: It ensures that a transaction is treated as a single unit of work, and either all the steps in a transaction must be completed successfully, or none of them must be executed at all. In other words, if a transaction fails, it is rolled back to the original state.
+
+**Consistency**: It ensures that the data is always consistent (correct for all rules ) before and after a transaction. In other words, a transaction cannot leave the database in an inconsistent state.
+
+**Isolation**: It ensures that each transaction is isolated from other concurrent transactions. This means that a transaction sees the state of the database before any concurrent transaction has modified it.
+
+**Durability:** It ensures that the changes made by a transaction are permanent and will not be lost even if the system crashes.
