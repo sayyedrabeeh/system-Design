@@ -144,3 +144,26 @@ Choosing between horizontal vs vertical scaling, or a diagonal approach, depends
         You want cost control early, with room to expand later.
         You’re migrating from a monolith to microservices gradually.
 
+### Stateful Vs. Stateless Applications
+
+  Knowing whether your application is stateful or stateless is key when designing your scaling strategy — it directly impacts how well your system can scale.
+
+  #### Stateless applications
+
+    Stateless apps don’t store session or user data on the server. Each request is processed independently.
+
+    Examples: Web APIs, microservices, static content delivery.
+
+  #### Stateful applications
+
+      Stateful apps retain session or transactional data between requests. They require context to function correctly.
+
+      Examples: Databases, authentication servers, real-time messaging.
+
+
+#### On-Premise Vs. Cloud Scaling
+
+**Cloud Scaling**
+
+Service providers such as Azure and AWS have automatic scaling.
+They can increase and decrease resources according to your requirements at any given time. They can scale up or out when traffic to your application is at its peak and scale down when demand is lessened. This provides organizations with more efficient and cost-effective scaling. 
