@@ -357,3 +357,41 @@ between nodes at any given moment.
     * Strong Consistency: Best suited for scenarios where data integrity and consistency are critical, such as financial systems, e-commerce platforms, and critical business applications.
     * Eventual Consistency: Well-suited for applications where real-time consistency is not vital and where system availability and scalability are more important, such as social media platforms, content distribution networks, and collaborative systems.
 
+
+### types of NoSQL Databases
+
+   ##### 1. Document-Based NoSQL Databases 
+
+
+    document-based NoSQL Databases store data in documents rather than rows and columns. They use JSON, BSON, or XML documents to store the data. The best thing about document-based NoSQL Databases is that businesses can store or retrieve in a form closest to the data objects used in the application.
+
+    Documents are stored with flexible schemas. 
+    It is easy to create and maintain documents. 
+    There is no direct relationship between two documents, eliminating the need to have a foreign key. 
+    Documents are available in JSON, BSON, and XML formats. 
+
+    Popular Document-based NoSQL Databases are MongoDB, CouchDB, and Firebase Firestore. 
+
+   ##### 2. Key-Value Stores 
+   
+   This is the simplest form of a NoSQL Database that stores each data element in a pair of keys and values. A unique key is allotted to each data element and is used to retrieve data. The values associated with each data element can be anything from strings to numbers to complex objects.
+
+   Caching, real-time leaderboards, cloud-based scalable applications. 
+
+        Popular key-value databases are Redis, Memcached, and Amazon DynamoDB. 
+
+   ##### 3.Column-Oriented Databases
+
+   column-based databases are NoSQL Databases that store data in columns, not rows. Businesses can efficiently run analytics on a few columns without looking at unwanted data. These databases are known for their efficiency in reading and retrieving data. Applications that deal with a large volume of data should go for columnar databases.
+
+   Real-time analytics, IoT applications, large-scale Machine Learning models, applications that require distributed storage. 
+
+        Popular Column-Oriented Databases are HBase, Apache Cassandra, Google Bigtable.
+
+   ##### 4. Graph-Based Databases
+
+   graph-based NoSQL Databases store data as nodes. Their main focus is to identify the relationships between different data elements. The connections between these nodes are called links or relationships. Here, data is simply represented as nodes and edges, and to retrieve relationships, quick graph traversal algorithms are used. 
+
+        Some of the popular graph-based databases are Neo4j, Amazon Neptune, and ArangoDB. 
+
+    
