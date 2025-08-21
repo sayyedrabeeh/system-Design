@@ -263,11 +263,16 @@ Use partitioning when your data is growing large, but you're still operating wit
 ### Optimistic Locking vs Pessimistic Locking.
 
 ---
+When multiple users/programs try to update the same data at the same time, we need a way to prevent conflicts (like overwriting each other’s changes).
 
 #### **Pessimistic Locking**
 
 * Assumes **conflicts are likely**, so it prevents them by **locking data before access**.
 * A transaction locks the row/record/table, and no other transaction can modify it until the lock is released.
+
+The system puts a lock on the data when someone starts reading/updating it.
+Others who try to update the same data must wait until the lock is released.
+Good when conflicts are very likely.
 
 ### Example:
 
@@ -287,6 +292,11 @@ Use partitioning when your data is growing large, but you're still operating wit
 * Assumes **conflicts are rare**, so it lets transactions proceed without locking first.
 * When committing, the system checks if the data was modified by someone else during the transaction.
 * If a conflict is found → the transaction **fails/retries**.
+When updating, the system checks if the data was modified by someone else (often by using a version number or timestamp).
+
+If it was modified, the update fails, and the user must retry.
+
+Good when conflicts are rare.
 
 ##### Example:
 
@@ -317,5 +327,33 @@ Use partitioning when your data is growing large, but you're still operating wit
 
 * Locking across many nodes is expensive.
 * Eventual consistency works better if systems allow retries rather than blocking.
+Pessimistic Locking = "Lock first, work later." (Safe but slow if many users)
+Optimistic Locking = "Work first, check later." (Fast but may need retries).
 
- 
+### Strong consistency.
+
+Strong consistency is a property in distributed systems that ensures that all nodes in the system see the same data at the same time, regardless of which node they are accessing.
+
+### Eventual consistency
+
+the system converges towards consistency, but during the transient period, users accessing 
+different data centers may observe different versions of the data. This is the characteristic 
+behavior of eventual consistency. While the system guarantees that updates will eventually be 
+propagated and all nodes will reach a consistent state, there can be temporary discrepancies 
+between nodes at any given moment.
+
+[!EventualConsistency](eventualconsistancy.webp)
+
+
+1. Data Accuracy:
+    * Strong Consistency: Ensures that all nodes see the same data at the same time, guaranteeing immediate data accuracy and integrity. Users can always read the most recent write, and there are no stale or conflicting values.
+    * Eventual Consistency: Temporarily allows nodes to be inconsistent, which may result in stale data being read until convergence occurs. This introduces the possibility of users seeing outdated values during the convergence process.
+
+2. Performance:
+    * Strong Consistency: Achieving strong consistency often involves increased coordination and communication among nodes, leading to higher latency for read and write operations. The system may experience more contention and slower responses due to the need for synchronous updates across replicas.
+    * Eventual Consistency: The asynchrony of write propagation and reduced coordination overhead allows for lower latency and higher throughput for read and write operations. The system can scale more easily and handle larger numbers of concurrent requests.
+
+3. Use Cases:
+    * Strong Consistency: Best suited for scenarios where data integrity and consistency are critical, such as financial systems, e-commerce platforms, and critical business applications.
+    * Eventual Consistency: Well-suited for applications where real-time consistency is not vital and where system availability and scalability are more important, such as social media platforms, content distribution networks, and collaborative systems.
+
