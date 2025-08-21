@@ -217,3 +217,44 @@ ACID stands for Atomicity, Consistency, Isolation, and Durability. It is a trans
 **Isolation**: It ensures that each transaction is isolated from other concurrent transactions. This means that a transaction sees the state of the database before any concurrent transaction has modified it.
 
 **Durability:** It ensures that the changes made by a transaction are permanent and will not be lost even if the system crashes.
+
+
+### The BASE Model IN DB
+
+BASE stands for Basically Available, Soft state, Eventually consistent. It is a database model used for distributed systems, which must be able to handle large volumes of data and a high degree of concurrency.
+
+**Basically Available**: It means that the system is always available, even if there is a network partition or a node failure.
+
+**Soft state**: It means that the state of the system can change over time, even without input
+
+**Eventually Consistent**: It means that the system will eventually become consistent, although there may be some inconsistency in the meantime.
+
+### Sharding vs Partitioning: Understanding Database Distribution.
+
+##### Sharding 
+
+Sharding is the process of dividing a database into smaller, more manageable pieces called "shards." Each shard contains a subset of the overall data and functions as an independent database. 
+
+The shards are distributed across multiple servers, enabling the system to handle large datasets and high volumes of traffic. This approach balances the load among servers and allows for tailored optimizations for specific shards based on their data.
+
+[!sharding](sharding.avif)
+
+**Scalability**: Enables horizontal scaling by distributing data across multiple servers.
+**Improved performance**: Reduces query load on individual servers due to data being distributed more widely.
+**Fault tolerance**: Ensures that failure in one shard doesn’t affect others, increasing system reliability.
+
+##### Partitioning
+
+Partitioning is the process of dividing a large database table into smaller, more manageable segments called partitions—all within the same server and database system. Each partition holds a subset of the data based on a specified rule, such as date ranges, geographic regions, or customer IDs.
+
+Unlike sharding, partitioning doesn’t spread data across multiple machines. Instead, it helps organize data internally to speed up queries and simplify maintenance.
+
+[!partitioning](partitioning.avif)
+
+both techniques aim to optimize database performance and scalability, they operate at different levels and serve distinct purposes.
+
+When to use sharding
+Use sharding when your system is hitting the limits of what a single database can handle
+
+When to use partitioning
+Use partitioning when your data is growing large, but you're still operating within a single server or database.
