@@ -395,3 +395,43 @@ between nodes at any given moment.
         Some of the popular graph-based databases are Neo4j, Amazon Neptune, and ArangoDB. 
 
     
+## What Is Caching?
+
+ is a technique that allows computer applications to temporarily store data in a computer's memory for quick retrieval.
+
+ the temporary storage area for this data is known as the cache. Caching frequently accessed data makes applications more efficient. Memory retrieval is much faster than accessing solid-state drives (SSDs), hard disk drives (HDDs), or network resources.
+
+[!CACHING](caching.svg)
+
+Caching is especially efficient when the application exhibits a common pattern of repeatedly accessing data that was previously accessed.
+
+Memory caching works by first setting aside a portion of RAM to be used as the cache. As an application tries to read data, typically from a data storage system like a database, it checks to see if the desired record already exists in the cache. If it does, the application will read the data from the cache, thus eliminating the slower access to the database. If the desired record is not in the cache, the application reads the record from the source instead. It retrieves data and stores it in the cache, allowing the application to quickly access it in the future.
+
+a least-recently-used (LRU) strategy removes the record that has not been accessed for the longest time compared to others in the cache. The underlying assumption is that if a record hasn’t been accessed in a while, it is less likely to be accessed again soon. In other words, recent records will likely be used again soon.
+
+On the other hand, a least-frequently-used (LFU) strategy involves tracking how many times each record in the cache has been accessed. Under this strategy, the record with the fewest accesses is removed. The assumption is that a record used infrequently will unlikely be accessed again soon.
+
+### Types of Caching
+
+1. CPU Cache
+
+    A small amount of memory is built into a computer’s central processing unit (CPU) that stores frequently accessed data and instructions. The CPU cache makes it faster for the CPU to get to data and instructions, so it doesn’t have to go to the slower main memory or storage devices as often.
+
+2. Memory Cache
+
+    Memory caching is a small portion of main memory (RAM) set aside as a temporary storage area for frequently accessed data. It helps to improve application performance by reducing the time it takes to access data from slower storage media like hard disk drives or networks.
+
+3. Disk Cache
+
+    This is a portion of main memory (RAM) used to store data that has recently been read from or written to a disk, such as a hard disk drive or solid-state drive. Disk caching helps reduce the number of read and write operations on the disk, improving the overall system performance.
+
+4. Browser Cache
+
+    A web browser's cache is a temporary storage area for web content, such as HTML pages, images, and other media. When a user visits a webpage, their browser stores a copy of its content in the cache. When the user revisits the same webpage, the browser can load the content from the cache rather than downloading it again, improving the page’s loading time.
+
+5. Distributed Cache
+
+    A distributed cache is a shared resource used by multiple computers within a network, designed to store frequently accessed data across various servers. By reducing the need to retrieve data from multiple servers, distributed caching enhances the performance of distributed systems. Additionally, it improves an application's scalability, as data can be cached in different locations. This setup allows more concurrent users to access the data with fewer requests.
+
+
+    
