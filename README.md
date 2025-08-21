@@ -258,3 +258,64 @@ Use sharding when your system is hitting the limits of what a single database ca
 
 When to use partitioning
 Use partitioning when your data is growing large, but you're still operating within a single server or database.
+
+
+### Optimistic Locking vs Pessimistic Locking.
+
+---
+
+#### **Pessimistic Locking**
+
+* Assumes **conflicts are likely**, so it prevents them by **locking data before access**.
+* A transaction locks the row/record/table, and no other transaction can modify it until the lock is released.
+
+### Example:
+
+* Two users want to update the same bank account balance.
+* With pessimistic locking, the first user’s transaction locks the account record.
+* The second user must **wait** until the first finishes before making changes.
+
+* Prevents conflicts entirely.
+* Good for **high-contention** systems (lots of simultaneous writes).
+* Reduces concurrency (others may be blocked).
+* Risk of **deadlocks** (two transactions waiting on each other’s locks).
+
+---
+
+####  **Optimistic Locking**
+
+* Assumes **conflicts are rare**, so it lets transactions proceed without locking first.
+* When committing, the system checks if the data was modified by someone else during the transaction.
+* If a conflict is found → the transaction **fails/retries**.
+
+##### Example:
+
+* Two users read a product price of `$100`.
+* User A updates it to `$120`.
+* User B tries to update it to `$110`, but the system detects the record was already changed.
+* User B’s update **fails** and must retry with the new version.
+
+* High concurrency (no blocking).
+* No deadlocks.
+* Better for **read-heavy workloads** with fewer conflicts.
+* Conflicts cause retries (extra work).
+* Bad for **high-contention** systems (lots of simultaneous writes).
+
+---
+
+| Feature       | Pessimistic Locking       | Optimistic Locking           |
+| ------------- | ---------------------------- | ------------------------------- |
+| Assumption    | Conflicts are **likely**     | Conflicts are **rare**          |
+| How it works  | Locks data before access     | Allows access, checks on commit |
+| Concurrency   | Low (blocking)               | High (no blocking)              |
+| Risk          | Deadlocks                    | Rollbacks/retries               |
+| Best use case | Write-heavy, high contention | Read-heavy, low contention      |
+
+---
+
+ In distributed **BASE systems**, optimistic approaches are more common because:
+
+* Locking across many nodes is expensive.
+* Eventual consistency works better if systems allow retries rather than blocking.
+
+ 
