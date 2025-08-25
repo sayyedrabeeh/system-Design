@@ -434,4 +434,7 @@ On the other hand, a least-frequently-used (LFU) strategy involves tracking how 
     A distributed cache is a shared resource used by multiple computers within a network, designed to store frequently accessed data across various servers. By reducing the need to retrieve data from multiple servers, distributed caching enhances the performance of distributed systems. Additionally, it improves an application's scalability, as data can be cached in different locations. This setup allows more concurrent users to access the data with fewer requests.
 
 
-    
+#### What is a data center
+
+A data center is a physical location that stores computing machines and their related hardware equipment. It contains the computing infrastructure that IT systems require, such as servers, data storage drives, and network equipment. It is the physical facility that stores any company’s digital data.
+
